@@ -34,6 +34,9 @@ inputs:
   content-type:
     description: ''
     required: false
+  content-disposition:
+    description: ''
+    required: false
   output-qr-url:
     description: ''
     default: 'false'
