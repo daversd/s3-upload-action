@@ -23,6 +23,7 @@ if (NODE_ENV != 'local') {
     bucketRoot: core.getInput('bucket-root'),
     outputFileUrl: core.getInput('output-file-url'),
     contentType: core.getInput('content-type'),
+    contentDisposition: core.getInput('content-disposition'),
     outputQrUrl: core.getInput('output-qr-url'),
     qrWidth: core.getInput('qr-width'),
     public: core.getInput('public'),
@@ -41,6 +42,7 @@ if (NODE_ENV != 'local') {
     bucketRoot: '',
     outputFileUrl: 'true',
     contentType: '',
+    contentDisposition: '',
     outputQrUrl: 'true',
     qrWidth: '120',
     public: 'false',
@@ -107,6 +109,7 @@ async function run(input) {
     Bucket: input.awsBucket,
     Key: fileKey,
     ContentType: input.contentType,
+    ContentDisposition: input.contentDisposition,
     Body: fs.readFileSync(input.filePath),
     ACL: acl,
   };
