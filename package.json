@@ -1,28 +1,34 @@
 {
   "name": "s3-upload-action",
-  "version": "2.1.0",
-  "description": "This is a GitHub Action that uploads a file to Amazon S3",
-  "main": "src/main.js",
-  "author": "Hiroyuki Kusu <kusu0806@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hkusu/s3-upload-action.git"
-  },
-  "bugs": {
-    "url": "https://github.com/hkusu/s3-upload-action/issues"
-  },
-  "homepage": "https://github.com/hkusu/s3-upload-action#readme",
+  "version": "1.0.0",
+  "description": "A GitHub Action for uploading files to AWS S3 with QR code generation.",
+  "main": "dist/main.js",
   "scripts": {
-    "local": "NODE_ENV=local node src/main.js",
-    "package": "ncc build src/main.js -o dist --source-map --license licenses.txt"
+    "build": "tsc -p tsconfig.json",
+    "test": "echo \"No tests specified\" && exit 0",
+    "local": "cross-env NODE_ENV=local node dist/main.js",
+    "package": "npx @vercel/ncc build src/main.ts -o dist --source-map --license licenses.txt"
   },
+  "keywords": [
+    "github",
+    "action",
+    "aws",
+    "s3",
+    "upload",
+    "qr-code"
+  ],
+  "author": "Hiroyuki Kusu <kusu0806@gmail.com>, David Dória <dave_rsd@hotmail.com>",
+  "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "aws-sdk": "^2.820.0",
+    "@aws-sdk/client-s3": "^3.0.0",
+    "@aws-sdk/s3-request-presigner": "^3.0.0",
     "qrcode": "^1.4.4"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.36.1"
+    "typescript": "^5.0.0",
+    "@types/node": "^18.0.0",
+    "@vercel/ncc": "^0.36.1",
+    "cross-env": "^7.0.3"
   }
 }

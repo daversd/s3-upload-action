@@ -1,74 +1,59 @@
 name: 'S3 Upload Action'
-description: 'This is a GitHub Action that uploads a file to Amazon S3.'
-author: 'Hiroyuki Kusu'
-branding:
-  icon: 'upload-cloud'
-  color: 'white'
+description: 'A GitHub Action to upload files to AWS S3.'
 inputs:
   aws-access-key-id:
-    description: ''
+    description: 'AWS Access Key ID'
     required: true
   aws-secret-access-key:
-    description: ''
+    description: 'AWS Secret Access Key'
     required: true
   aws-region:
-    description: ''
+    description: 'AWS Region'
     required: true
   aws-bucket:
-    description: ''
+    description: 'S3 Bucket Name'
     required: true
   file-path:
-    description: ''
+    description: 'Path to the file to upload'
     required: true
   destination-dir:
-    description: ''
+    description: 'Destination directory in the S3 bucket'
     required: false
   bucket-root:
-    description: ''
-    default: ''
+    description: 'Root directory in the S3 bucket'
     required: false
   output-file-url:
-    description: ''
-    default: 'false'
+    description: 'Output the file URL'
     required: false
+    default: 'true'
   content-type:
-    description: ''
+    description: 'Content type of the file'
     required: false
   content-disposition:
-    description: ''
-    required: false
-  output-qr-url:
-    description: ''
-    default: 'false'
-    required: false
-  qr-width:
-    description: ''
-    default: '120'
+    description: 'Content disposition of the file'
     required: false
   public:
-    description: ''
+    description: 'Make the uploaded file public'
+    required: false
     default: 'false'
-    required: false
   expire:
-    description: ''
-    default: '604800'
+    description: 'Expiration time for signed URLs (in seconds)'
     required: false
+    default: '180'
   alternative-domain-public:
-    description: ''
+    description: 'Alternative domain for public files'
     required: false
   alternative-domain-private:
-    description: ''
+    description: 'Alternative domain for private files'
     required: false
   tags:
-    description: 'Optional comma-separated list of S3 object tags (e.g., "Key1=Value1,Key2=Value2").'
+    description: 'Comma-separated list of tags for the uploaded file'
     required: false
 outputs:
-  result:
-    description: '`success` or `failure` is set.'
   file-url:
-    description: ''
-  qr-url:
-    description: ''
+    description: 'The URL of the uploaded file'
+  result:
+    description: 'Result status: success or failure'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
