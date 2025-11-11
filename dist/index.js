@@ -55117,15 +55117,9 @@ const client_s3_1 = __nccwpck_require__(9250);
 const fs_1 = __importDefault(__nccwpck_require__(7147));
 const path_1 = __importDefault(__nccwpck_require__(1017));
 const NODE_ENV = process.env['NODE_ENV'];
-const AWS_ACCESS_KEY_ID = process.env['AWS_ACCESS_KEY_ID'];
-const AWS_SECRET_ACCESS_KEY = process.env['AWS_SECRET_ACCESS_KEY'];
-const AWS_BUCKET = process.env['AWS_BUCKET'];
-if (!AWS_ACCESS_KEY_ID)
-    throw new Error('AWS Access Key ID was not provided');
-if (!AWS_SECRET_ACCESS_KEY)
-    throw new Error('AWS Secret Access Keys was not provided');
-if (!AWS_BUCKET)
-    throw new Error('AWS Bucket was not provided');
+const AWS_ACCESS_KEY_ID = process.env['AWS_ACCESS_KEY_ID'] || '';
+const AWS_SECRET_ACCESS_KEY = process.env['AWS_SECRET_ACCESS_KEY'] || '';
+const AWS_BUCKET = process.env['AWS_BUCKET'] || '';
 let input;
 if (NODE_ENV !== 'local') {
     input = {
